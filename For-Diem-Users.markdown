@@ -38,4 +38,12 @@
 
 	chmod -R 777 web/theme/css/
 
-6 - Now you can use less files
+6 - Create a web/theme/less folder
+
+Any `web/theme/less/mystyle.less` file will me parsed 
+and a `web/theme/css/mystyle.css` file is created/updated
+if any modification is done.
+
+7 - Now you can use less in Diem
+
+Read doc at : [leafo lessphp parser doc](http://leafo.net/lessphp/docs/)
