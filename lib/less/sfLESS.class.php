@@ -273,6 +273,29 @@ class sfLESS
   }
 
   /**
+   * Calls lessphp compiler for LESS file
+   * @author  djacquel
+   * @param   string  $lessFile a LESS file
+   * @param   string  $cssFile  a CSS file
+   *
+   * @return  string            output
+   */
+  public function callLessPhpCompiler($lessFile, $cssFile)
+  {
+      try
+      {
+        $less = new lessc( $lessFile );
+        $css  = $less->parse();
+        file_put_contents( $cssFile, $css );
+        return $css;
+      }
+      catch (exception $e)
+      {
+        return false;
+      }
+  }
+
+  /**
    * Returns true if compiler can throw RuntimeException
    *
    * @return boolean
