@@ -171,7 +171,17 @@ class sfLESS
 
     if ($shouldCompile)
     {
-      $buffer = $this->callLesscCompiler($lessFile, $cssFile);
+      if(sfConfig::get('app_sf_less_plugin_use_lessphp_compiler' ))
+      {
+        // use lessphp parser
+        $buffer = $this->callLessPhpCompiler($lessFile, $cssFile);
+      }
+      else
+      {
+        // using lessc parser
+        $buffer = $this->callLesscCompiler($lessFile, $cssFile);
+      }
+
       if ($buffer !== false)
       {
         $isCompiled = $this->writeCssFile($cssFile, $buffer) !== false;        

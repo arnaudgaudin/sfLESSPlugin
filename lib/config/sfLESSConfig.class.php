@@ -39,7 +39,10 @@ class sfLESSConfig extends LESSConfig
    */
   public function getCssPaths()
   {  
-    return sfLESSUtils::getSepFixedPath(sfConfig::get('sf_web_dir')) . '/css/';
+    /* css dir can be somewhere else than web/css so let's add a
+     * parameter that allows us to configure css path - djacquel */
+    $path = sfConfig::get('app_sf_less_plugin_css_path', '/css/');
+    return sfLESSUtils::getSepFixedPath(sfConfig::get('sf_web_dir')) . $path;
   }
 
   /**
@@ -47,7 +50,10 @@ class sfLESSConfig extends LESSConfig
    */
   public function getLessPaths()
   {
-    return sfLESSUtils::getSepFixedPath(sfConfig::get('sf_web_dir')) . '/less/';
+    /* css dir can be somewhere else than web/less so let's add a
+     * parameter that allows us to configure less path - djacquel */
+      $path = sfConfig::get('app_sf_less_plugin_less_path', '/less/');
+      return sfLESSUtils::getSepFixedPath(sfConfig::get('sf_web_dir')) . $path;
   }
 
   /**
