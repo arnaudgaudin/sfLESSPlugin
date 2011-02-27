@@ -4,7 +4,7 @@
 
 1 - In your command prompt from myproject/plugins directory
 
-	git clone git@github.com:djacquel/sfLESSPlugin.git --recursive
+	git clone git://github.com/diem-project/sfLESSPlugin.git --recursive
 
 2 - In your app conf file `config/ProjectConfiguration.php`
 
