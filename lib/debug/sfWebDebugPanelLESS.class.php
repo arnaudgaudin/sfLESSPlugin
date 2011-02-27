@@ -51,7 +51,7 @@ class sfWebDebugPanelLESS extends sfWebDebugPanel
    */
   public function getTitle()
   {
-    return '<img src="/sfLESSPlugin/images/css_go.png" alt="LESS helper" height="16" width="16" /> less';
+    return '<img src="./sfLESSPlugin/images/css_go.png" alt="LESS helper" height="16" width="16" /> less';
   }
 
   /**
