@@ -285,6 +285,7 @@ class sfLESS
       try
       {
         $less = new lessc( $lessFile );
+		$less->importDir = sfLESS::getConfig()->getLessPaths();
         $css  = $less->parse();
         file_put_contents( $cssFile, $css );
         return $css;
