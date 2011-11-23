@@ -126,6 +126,13 @@ class sfLESS
    */
   public function getCssPathOfLess($lessFile)
   {
+	//debug chemins des liens symboliques
+	$token = 'themesFmk';
+	if(strpos($lessFile, $token)){
+	  //on récupère la portion se situant après themesFmk
+	  $lessFile = self::getConfig()->getLessPaths() . substr($lessFile, strrpos($lessFile, $token) + strlen($token) + 1);
+	}
+	  
     $file = preg_replace('/\.less$/', '.css', $lessFile);
     $file = preg_replace(sprintf('/^%s/', preg_quote(self::getConfig()->getLessPaths(), '/')), self::getConfig()->getCssPaths(), $file);
     return $file;
@@ -285,6 +292,7 @@ class sfLESS
       try
       {
         $less = new lessc( $lessFile );
+		$less->importDir = sfLESS::getConfig()->getLessPaths();
         $css  = $less->parse();
         file_put_contents( $cssFile, $css );
         return $css;
