@@ -9,15 +9,18 @@ all:
 
 dev:
   sf_less_plugin:
-    check_dates: false
-    check_dependencies: true
+    compile:  false
 
 prod:
   sf_less_plugin:
     compile:  false
-    check_dates: true
-    
-    
+
+less:
+  sf_less_plugin:
+    compile:  true
+    check_dates: false
+    check_dependencies: true
+
 #all:
 #  sf_less_php_plugin:
 #    path: "/theme/less"
