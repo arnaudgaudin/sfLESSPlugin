@@ -97,15 +97,18 @@ EOF;
     }
 
     // Compiles LESS files
+    $timerTotal = new sfTimer;
     foreach ($less->findLessFiles() as $lessFile)
     {
       if (!isset($arguments['file']) || (false !== strpos($lessFile, $arguments['file'] . '.less')))
       {
+        $timer = new sfTimer;
         if ($less->compile($lessFile))
         {
           if (isset($options['debug']) && $options['debug'])
           {
-            $this->logSection('compiled', sprintf("%s => %s",
+            $this->logSection('compiled', sprintf("(%s s) %s => %s",
+              $timer->getElapsedTime(),
               sfLESSUtils::getProjectRelativePath($lessFile),
               sfLESSUtils::getProjectRelativePath($less->getCssPathOfLess($lessFile))
             ), null, 'COMMAND');
@@ -122,5 +125,12 @@ EOF;
         }
       }
     }
+    $this->logSection(
+              'All compiled files in ',
+              $timerTotal->getElapsedTime().' s',
+              null,
+              'COMMAND'
+            );
+
   }
 }
