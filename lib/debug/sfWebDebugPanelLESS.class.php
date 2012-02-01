@@ -76,7 +76,7 @@ class sfWebDebugPanelLESS extends sfWebDebugPanel
     }
     $panel .= '</table>';
 
-    $this->setStatus($this->errors?sfLogger::ERR:($this->compiled?sfLogger::WARNING:sfLogger::INFO));
+    $this->setStatus($this->errors?sfLogger::ERR:($this->compiled?sfLogger::INFO:sfLogger::WARNING));
 
     return $panel;
   }
